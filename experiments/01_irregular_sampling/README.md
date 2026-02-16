@@ -60,9 +60,11 @@ N_SEEDS = 5              # Number of independent runs
 
 ## Citation
 If you use this code, plase cite the original paper:
+```bibtex
 @article{zainal2026neural,
   title={Neural Network Dynamics in Biomedical Applications: Reviewing the Gap Between Optimization Instability and Theory-Driven Design},
   author={Zainal, Zayn Andre and Huang, Zhaojing and Aguilar, Isabelle and Kavahei, Omid},
   journal={{TBA)},
   year={2026}
 }
+```
