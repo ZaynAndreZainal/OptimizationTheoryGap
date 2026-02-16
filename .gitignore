@@ -1,0 +1,87 @@
+# ===========================
+# Python & Environment
+# ===========================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environments
+# (Matches common names for venvs)
+.venv/
+venv/
+env/
+ENV/
+
+# ===========================
+# Deep Learning & Models
+# ===========================
+# Ignore large model weights (often >100MB)
+*.pt
+*.pth
+*.ckpt
+*.pkl
+*.h5
+*.onnx
+
+# Keep the checkpoints directories, but ignore the binary files inside them
+# (See "Pro-Tip" below for how to use .gitkeep)
+experiments/**/checkpoints/*
+!experiments/**/checkpoints/.gitkeep
+
+# ===========================
+# Datasets & Data
+# ===========================
+# MedMNIST often downloads .npz files or caches to a hidden folder
+*.npz
+.medmnist/
+medmnist_download/
+data/
+
+# Ignore generated training data arrays if you save them
+*.npy
+*.csv
+
+# ===========================
+# IDE & System Files
+# ===========================
+# PyCharm / IntelliJ
+.idea/
+
+# VS Code
+.vscode/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# ===========================
+# Experiment Outputs
+# ===========================
+# Ignore high-res generated figures if they are just test runs
+# (Comment this out if you WANT to track your result plots)
+# experiments/**/figures/*.png
+
+# Ignore log files
+*.log
+runs/
