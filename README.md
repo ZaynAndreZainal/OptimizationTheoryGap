@@ -72,7 +72,7 @@ python3 train_eos.py --seed 0
 # 2. Visualize the trajectory
 python3 visualize.py --checkpoint 0
 
-# 2. Visualize multi-seed trajectory 
+# 3. Visualize multi-seed trajectory (publication figure)
 python3 visualize_multi.py --seed 0
 ```
 
@@ -91,7 +91,9 @@ If you use this code or our findings in your research, please cite the paper:
 }
 ```
 
-License
+## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
 ---
+
 **Contact**: Andre Zainal (andre.zainal@sydney.edu.au)
