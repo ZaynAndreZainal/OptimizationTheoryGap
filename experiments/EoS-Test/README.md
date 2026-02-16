@@ -22,7 +22,7 @@ pip install -r requirements.txt
 ### Single Training Run
 
 ```bash
-python3 train.py --seed 0
+python3 train_eos.py --seed 0
 python3 visualize.py --checkpoint 0
 ```
 
@@ -32,7 +32,7 @@ Train 5 runs with same base index
 
 ```bash
 for seed in {0..4}; do
-  python3 train.py --seed $seed --base-index 10
+  python3 train_eos.py --seed $seed --base-index 10
 done
 ```
 
