@@ -7,9 +7,6 @@ from scipy import stats
 from typing import Dict, List, Tuple
 import pandas as pd
 
-# ==========================================
-# 1. CONFIGURATION
-# ==========================================
 TRAIN_SAMPLES = 300
 SEQ_LEN = 10
 DT_MEAN = 0.5
@@ -23,9 +20,6 @@ DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print(f"Using device: {DEVICE}")
 
 
-# ==========================================
-# 2. DYNAMICAL SYSTEMS
-# ==========================================
 class DynamicalSystem:
   """Base class for dynamical systems"""
 
@@ -83,10 +77,6 @@ class VanDerPol(DynamicalSystem):
       theta = np.random.uniform(0, 2 * np.pi)
       return np.array([r * np.cos(theta), r * np.sin(theta)])
 
-
-# ==========================================
-# 3. INTEGRATION UTILITIES
-# ==========================================
 def adaptive_rk4_integrate(func, y0, t_span):
   trajectory = [y0]
   curr_y = y0
@@ -114,10 +104,6 @@ def generate_irregular_times(n_points, dt_mean, dt_jitter, seed=None):
 def generate_regular_times(n_points, dt):
   return np.arange(0, n_points * dt, dt)
 
-
-# ==========================================
-# 4. DATA GENERATION
-# ==========================================
 def generate_training_data(system: DynamicalSystem,
                            n_samples: int,
                            seq_len: int,
@@ -169,10 +155,6 @@ def generate_training_data(system: DynamicalSystem,
     'dX_node': torch.FloatTensor(np.array(dX_node))
   }
 
-
-# ==========================================
-# 5. MODELS
-# ==========================================
 class TimeAwareLSTM(nn.Module):
   def __init__(self, seq_len, hidden_dim):
     super().__init__()
@@ -274,10 +256,6 @@ class NeuralODE(nn.Module):
 
     return torch.stack(trajectory)
 
-
-# ==========================================
-# 6. TRAINING
-# ==========================================
 def train_model(model, data, model_type, epochs, device, lr=LEARNING_RATE):
   model = model.to(device)
   optimizer = optim.Adam(model.parameters(), lr=lr)
@@ -304,10 +282,6 @@ def train_model(model, data, model_type, epochs, device, lr=LEARNING_RATE):
 
   return model
 
-
-# ==========================================
-# 7. EVALUATION
-# ==========================================
 def evaluate_extrapolation(model, system, model_type, irregular, seed, device):
   np.random.seed(seed)
   y0_test = system.get_initial_condition(on_attractor=False)
@@ -361,10 +335,6 @@ def evaluate_extrapolation(model, system, model_type, irregular, seed, device):
     'y0': y0_test
   }
 
-
-# ==========================================
-# 8. EXPERIMENT
-# ==========================================
 def run_rigorous_experiment(system: DynamicalSystem):
   print(f"\n{'=' * 60}")
   print(f"Running experiment: {system.name}")
@@ -426,10 +396,6 @@ def run_rigorous_experiment(system: DynamicalSystem):
 
   return results
 
-
-# ==========================================
-# 9. STATISTICAL ANALYSIS
-# ==========================================
 def compute_statistics(results):
   stats_df = []
 
@@ -468,10 +434,6 @@ def compute_statistics(results):
 
   return df
 
-
-# ==========================================
-# 10. VISUALIZATION
-# ==========================================
 def plot_results(results, system_name):
   fig = plt.figure(figsize=(18, 10))
   gs = fig.add_gridspec(2, 3, hspace=0.3, wspace=0.3)
@@ -479,7 +441,7 @@ def plot_results(results, system_name):
   # Use first seed for trajectory plots
   seed_idx = 0
 
-  # Panel A: Time domain (irregular) - SHORT WINDOW
+  # Panel A: Time domain (irregular)
   ax1 = fig.add_subplot(gs[0, 0])
   # Show only 0-50ms to see actual oscillations
   true = results['node_irregular'][seed_idx]['true']
@@ -604,9 +566,6 @@ def plot_results(results, system_name):
   plt.savefig(f'{system_name.replace(" ", "_")}_rigorous.png', dpi=300, bbox_inches='tight')
   print(f"\n✓ Saved {system_name.replace(' ', '_')}_rigorous.png")
 
-# ==========================================
-# 11. MAIN EXECUTION
-# ==========================================
 if __name__ == "__main__":
   # Run experiment on FitzHugh-Nagumo
   fhn_system = FitzHughNagumo()
@@ -614,7 +573,7 @@ if __name__ == "__main__":
   fhn_stats = compute_statistics(fhn_results)
   plot_results(fhn_results, fhn_system.name)
 
-  # Optional: Run on Van der Pol
+  ## OPTIONAL: Run on Van der Pol
   # vdp_system = VanDerPol()
   # vdp_results = run_rigorous_experiment(vdp_system)
   # vdp_stats = compute_statistics(vdp_results)
@@ -628,4 +587,5 @@ if __name__ == "__main__":
   print(f"✓ Regular vs Irregular ablation")
   print(f"✓ Statistical significance testing")
   print(f"✓ Error bars and confidence intervals")
+
   print(f"✓ Multiple evaluation metrics (RMSE, MAE)")
