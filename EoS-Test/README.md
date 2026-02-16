@@ -69,3 +69,6 @@ Uses MedMNIST PathMNIST (histopathological tissue images, 9 classes).
 If you use this code, please cite:
 - Cohen et al. (2021) - "Gradient Descent on Neural Networks Typically Occurs at the Edge of Stability"
 - Yang et al. (2023) - "MedMNIST v2"
+
+## Example Output
+![Multi-seed EoS Visualization](figures/eos_multiseed_figure_10.png)
