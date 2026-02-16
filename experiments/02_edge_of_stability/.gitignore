@@ -1,32 +1,30 @@
-# Python
+# --- Python & Environment ---
 __pycache__/
 *.py[cod]
 *$py.class
-*.so
-.Python
-*.egg-info/
-dist/
-build/
 .venv/
 venv/
 env/
 
-# Data & Results
-checkpoints/*.pkl
-figures/*.png
+# --- PyTorch Checkpoints ---
+# Ignore all model weights (often >100MB) but keep the folder structure
+checkpoints/*.pt
+checkpoints/*.pth
+checkpoints/*.ckpt
+# Exception: Keep the .gitkeep file so the folder is tracked
+!checkpoints/.gitkeep
+
+# --- Dataset ---
+# MedMNIST might download data to a hidden folder or local file
+.medmnist/
+medmnist_download/
 *.npz
 
-# Keep directory structure
-!checkpoints/.gitkeep
-!figures/.gitkeep
-
-# IDE
+# --- IDE Settings ---
 .vscode/
 .idea/
-*.swp
-*.swo
-*~
 
-# OS
-.DS_Store
-Thumbs.db
+# --- Local Logs & Figures ---
+# You might want to track final figures, but ignore intermediate test plots
+# Uncomment the line below if you generate hundreds of test plots
+# figures/test_*.png
