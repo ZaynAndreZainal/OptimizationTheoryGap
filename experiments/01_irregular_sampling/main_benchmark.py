@@ -259,7 +259,7 @@ class NeuralODE(nn.Module):
 def train_model(model, data, model_type, epochs, device, lr=LEARNING_RATE):
   model = model.to(device)
   optimizer = optim.Adam(model.parameters(), lr=lr)
-  scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer, 'min', factor=0.5, patience=200, verbose=False)
+  scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=0.5, patience=200)
   criterion = nn.MSELoss()
 
   for key in data:
@@ -278,7 +278,7 @@ def train_model(model, data, model_type, epochs, device, lr=LEARNING_RATE):
 
     loss.backward()
     optimizer.step()
-    scheduler.step(loss)
+    scheduler.step(loss.item())
 
   return model
 
@@ -514,7 +514,7 @@ def plot_results(results, system_name):
            'b-', alpha=0.8, label='LSTM', linewidth=1.5)
   ax4.plot(times_reg[:limit_reg], results['node_regular'][seed_idx]['pred'][:limit_reg, 0],
            'r-', linewidth=2, label='Neural ODE', alpha=0.9)
-  ax4.set_title("D. Regular Sampling (0-50ms)", fontsize=12, fontweight='bold')
+  ax4.set_title(f"D. Regular Sampling (0-{t_max}ms)", fontsize=12, fontweight='bold')
   ax4.set_xlabel("Time (ms)", fontsize=10)
   ax4.set_ylabel("State Variable 1", fontsize=10)
   ax4.legend(fontsize=8, loc='best')
