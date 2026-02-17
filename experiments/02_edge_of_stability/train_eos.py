@@ -15,7 +15,7 @@ from torch.utils.data import DataLoader
 parser = argparse.ArgumentParser(description='Train with EoS tracking')
 parser.add_argument('--seed', type=int, default=None,
                     help='Random seed for reproducibility')
-parser.add_argument('--base-index', type=int, default=None,  # ADD THIS
+parser.add_argument('--base-index', type=int, default=None,
                     help='Force specific checkpoint base index (useful for multi-seed runs)')
 args = parser.parse_args()
 
