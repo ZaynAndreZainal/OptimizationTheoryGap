@@ -2,15 +2,18 @@
 A multi-seed visualization toolkit for observing "Edge of Stability" phenomena in neural networks trained on biomedical data (MedMNIST).
 
 ## Overview
+
 This experiment reproduces **Appendix A.2** of the paper. It demonstrates that neural networks optimizing on complex biomedical loss landscapes do not converge to a flat local minimum. Instead, they enter a chaotic "Edge of Stability" regime where the sharpness of the loss function ($\lambda_{max}$) hovers just above the stability threshold ($2/\eta$).
 
 ## Features
+
 - **Multi-seed Training:** Statistical validation across 5 independent seeds.
 - **Hessian Analysis:** Tracks the maximum eigenvalue ($\lambda_{max}$) using Power Iteration to quantify sharpness.
 - **Loss Landscape Visualization:** Generates 2D and 3D PCA projections of the optimization trajectory.
 - **MedMNIST Integration:** Uses *PathMNIST* (histopathological tissue patches) to simulate realistic biomedical classification tasks.
 
 ## Installation
+
 This experiment relies on the shared environment defined in the repository root.
 
 ```bash
@@ -39,7 +42,7 @@ python visualize_loss.py --checkpoint 0
 
 To generate the aggregated figure with confidence intervals (as seen in the paper):
 
-**Step A: Train 5 independent models**
+#### Step A: Train 5 independent models
 
 ```bash
 # Bash loop (Linux/Mac)
@@ -51,7 +54,7 @@ done
 # for ($i=0; $i -lt 5; $i++) { python train_eos.py --seed $i --base-index 10 }
 ```
 
-**Step B: Generate Aggregate Visualization**
+#### Step B: Generate Aggregate Visualization
 
 ```bash
 python3 visualize_multi.py --checkpoint-base 10
