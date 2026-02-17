@@ -87,7 +87,7 @@ python visualize_multi.py --checkpoint-base 10 --azim-adjust -45 --elev-adjust 1
 
 ## Citation
 If you use this code, please cite the main paper and the underlying datasets/theories:
-- **Primary Paper**: Zainal et al. (2025) - "Neural Network Dynamics in Biomedical Applications"
+- **Primary Paper**: Zainal et al. (2026) - "Neural Network Dynamics in Biomedical Applications"
 - **Edge of Stability Theory**: Cohen et al. (2021) - "Gradient Descent on Neural Networks Typically Occurs at the Edge of Stability"
 - **Dataset**: Yang et al. (2023) - "MedMNIST v2 - A Large-Scale Lightweight Benchmark for 2D and 3D Biomedical Image Analysis"
 
