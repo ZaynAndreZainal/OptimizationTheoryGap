@@ -111,7 +111,7 @@ for j in range(len(epochs) - 1):
 
 # Confidence interval
 ax_loss.fill_between(epochs, loss_ci_lower, loss_ci_upper,
-                      color='gray', alpha=0.15, zorder=5)
+                      color='#1f77b4', alpha=0.35, zorder=5)
 
 ax_loss.set_ylabel('Training Loss', fontsize=12, fontweight='bold')
 ax_loss.set_xlabel('Epochs', fontsize=12)
@@ -157,7 +157,7 @@ from matplotlib.patches import Patch
 
 legend_elements = [
     Line2D([0], [0], color=colors_plasma[0], linewidth=2.5, label=f'Training Loss (n={n_seeds})'),
-    Patch(facecolor='gray', alpha=0.15, label='95% CI (Loss)'),
+    Patch(facecolor='#1f77b4', alpha=0.35, label='95% CI (Loss)'),
     Line2D([0], [0], color=SHARPNESS_COLOR, linewidth=2.5, label=f'Sharpness (n={n_seeds})'),
     Patch(facecolor=SHARPNESS_COLOR, alpha=0.15, label='95% CI (Sharpness)'),
     Line2D([0], [0], color=STABILITY_LINE_COLOR, linestyle='--', linewidth=2.5,
@@ -166,7 +166,7 @@ legend_elements = [
 ]
 
 ax_sharp.legend(handles=legend_elements,
-                loc='upper left', bbox_to_anchor=(1.02, 1),
+                loc='upper left', bbox_to_anchor=(1.04, 1),
                 fontsize=10, frameon=True, fancybox=True)
 ax_loss.text(-0.04, 1.05, 'a', transform=ax_loss.transAxes,
              fontsize=16, fontweight='bold', va='top')
@@ -370,9 +370,6 @@ ax_3d.text2D(-0.1, 1.05, 'b', transform=ax_3d.transAxes,
 ax_contour = fig.add_subplot(gs[1, 1])
 contour = ax_contour.contourf(X, Y, Z, levels=25, cmap='coolwarm', alpha=0.9)
 ax_contour.contour(X, Y, Z, levels=12, colors='black', alpha=0.3, linewidths=0.8)
-
-# FORCE SQUARE ASPECT RATIO
-# ax_contour.set_aspect('equal', adjustable='box')  # ADD THIS LINE RIGHT HERE
 
 # Trajectory
 for i in range(len(trajectory_coords) - 1):
