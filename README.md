@@ -29,6 +29,7 @@ OptimizationTheoryGap/
 ```
 
 ### 1. Irregular Sampling Benchmark (Appendix A.1)
+
 _Located in: `experiments/01_irregular_sampling/`_
 
 Demonstrates the "Discrete-Time Fallacy" by benchmarking Neural ODEs against Time-Aware LSTMs and ODE-RNNs on chaotic FitzHugh-Nagumo neuronal dynamics.
@@ -36,13 +37,16 @@ Demonstrates the "Discrete-Time Fallacy" by benchmarking Neural ODEs against Tim
 - **Metrics**: RMSE, Phase Space Trajectory Divergence.
 
 ### 2. Edge of Stability Visualization (Appendix A.2)
+
 _Located in: `experiments/02_edge_of_stability/`_
 Investigates optimization instability in deep networks trained on biomedical data (MedMNIST).
 - **Key Finding**: Modern optimizers do not converge to flat minima but "surf" the walls of high-curvature valleys ($\lambda_{max} > 2/\eta$), creating a risk of fragility in safety-critical deployments.
 - **Visualization**: 3D PCA projections of the loss landscape and Hessian spectral estimation.
 
 ## **Getting Started**
+
 ### Prerequisites
+
 Ensure you have Python 3.8+ installed. We recommend creating a virtual environment:
 
 ```bash
@@ -53,9 +57,11 @@ source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 # Install dependencies (PyTorch, SciPy, Matplotlib, MedMNIST)
 pip install -r requirements.txt
 ```
+
 _Note: For GPU acceleration, please install the appropriate CUDA version of PyTorch from pytorch.org before running the requirements file._
 
 ### Experiment A.1: Irregular Sampling (FitzHugh-Nagumo)
+
 To reproduce the time-series benchmarks and generate Figure 2 from the paper:
 ```bash
 cd experiments/01_irregular_sampling
@@ -64,6 +70,7 @@ python3 benchmark_main.py
 _Output: `FitzHugh-Nagumo_rigorous.png` abd statistical summary table._
 
 ### Experiment A.2: Edge of Stability (MedMNIST)
+
 To reproduce the loss landscape visualization and Figure 3 from the paper:
 ```bash
 cd experiments/02_edge_of_stability
