@@ -98,4 +98,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-**Corresponding author e-mail:**: Andre Zainal (andre.zainal@sydney.edu.au)
+**Corresponding author e-mail**: Andre Zainal (andre.zainal@sydney.edu.au)
