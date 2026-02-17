@@ -1,6 +1,7 @@
 # Neural ODE vs. Discrete Baselines on Irregular Biomedical Dynamics
 
 ## Overview
+
 This repository contains the reproduction code for **Experiment A.1** from the paper *"Neural Network Dynamics in Biomedical Applications: Reviewing the Gap Between Optimization Instability and Theory-Driven Design"*.
 
 It benchmarks **Continuous-Time Neural Networks (Neural ODEs)** against discrete-time baselines (**LSTMs**, **ODE-RNNs**) on chaotic, irregularly sampled biomedical signals (FitzHugh-Nagumo neuronal dynamics).
@@ -8,6 +9,7 @@ It benchmarks **Continuous-Time Neural Networks (Neural ODEs)** against discrete
 The experiment demonstrates the "Discrete-Time Fallacy": standard RNNs fail to generalize when observation intervals are irregular, whereas Neural ODEs learn the underlying continuous vector field.
 
 ## Key Features
+
 - **Dynamical Systems:** Simulates FitzHugh-Nagumo (FHN) and Van der Pol oscillators.
 - **Irregular Sampling:** Generates training data with randomized time intervals ($dt \sim \mathcal{U}[0.2, 0.8]$).
 - **Rigorous Baselines:** Compares Neural ODEs against:
@@ -16,6 +18,7 @@ The experiment demonstrates the "Discrete-Time Fallacy": standard RNNs fail to g
 - **Statistical Validation:** Runs $n=5$ independent seeds and performs t-tests for significance.
 
 ## Requirements
+
 Ensure you have a Python environment (3.8+) with the following dependencies:
 
 ```bash
@@ -24,6 +27,7 @@ pip install torch numpy matplotlib scipy pandas
 _Note: A GPU is recommended but not required. The code automatically detects CUDA._
 
 ## File Structure
+
 This script is self-contained. It includes:
 1. **Data Generation:** RK4 integration of FHN equations.
 2. **Model Definitions:** `NeuralODE`, `TimeAwareLSTM`, `ODERNN`.
@@ -31,12 +35,15 @@ This script is self-contained. It includes:
 4. **Evaluation & Plotting:** Generates the 6-panel figure used in the paper (Time domain, Phase space, RMSE comparison).
 
 ## Usage
+
 Run the main script to reproduce the experiment: 
+
 ```bash
 python benchmark_main.py
 ```
 
 ### Expected Output
+
 The script will:
 1. Train models across 5 random seeds.
 2. Print a statistical summary table (Mean RMSE ± Std).
@@ -44,6 +51,7 @@ The script will:
 4. Save a high-resolution figure: FitzHugh-Nagumo_rigorous.png.
 
 ## Configuration
+
 Hyperparameters are defined at the top of the script and match the paper's Appendix:
 
 ```python
