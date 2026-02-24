@@ -462,7 +462,8 @@ def plot_results(results, system_name):
   ax1.plot(times[:limit], results['node_irregular'][seed_idx]['pred'][:limit, 0],
            'r-', linewidth=2, label='Neural ODE', alpha=0.9)
   ax1.axvline(x=SEQ_LEN * DT_MEAN, color='gray', linestyle=':', alpha=0.6)
-  ax1.set_title(f"A. Irregular Sampling (0-{t_max}ms)", fontsize=12, fontweight='bold')
+  # ax1.set_title(f"A. Irregular Sampling (0-{t_max}ms)", fontsize=12, fontweight='bold')
+  ax1.set_title(f"A", fontsize=12, fontweight='bold')
   ax1.set_xlabel("Time (ms)", fontsize=10)
   ax1.set_ylabel("State Variable 1", fontsize=10)
   ax1.legend(fontsize=8, loc='upper left')
@@ -483,7 +484,8 @@ def plot_results(results, system_name):
   ax2.plot(true[:, 0], true[:, 1], 'k--', alpha=0.7, linewidth=2, zorder=10, label='Ground Truth')
   y0 = results['node_irregular'][seed_idx]['y0']
   ax2.scatter([y0[0]], [y0[1]], c='green', s=100, zorder=11, edgecolors='black')
-  ax2.set_title("B. Phase Space (Irregular)", fontsize=12, fontweight='bold')
+  # ax2.set_title("B. Phase Space (Irregular)", fontsize=12, fontweight='bold')
+  ax2.set_title("B", fontsize=12, fontweight='bold')
   ax2.set_xlabel("State 1", fontsize=10)
   ax2.set_ylabel("State 2", fontsize=10)
   ax2.legend(fontsize=8, loc='best')  # Moved down slightly
@@ -498,7 +500,9 @@ def plot_results(results, system_name):
   colors = ['blue', 'cyan', 'red', 'lightblue', 'pink']
 
   bars = ax3.bar(conditions, means, yerr=stds, capsize=5, color=colors, alpha=0.7, edgecolor='black')
-  ax3.set_title(f"C. RMSE Comparison (n={N_SEEDS})", fontsize=12, fontweight='bold')
+  # ax3.set_title(f"C. RMSE Comparison (n={N_SEEDS})", fontsize=12, fontweight='bold')
+  ax3.set_title(f"C", fontsize=12, fontweight='bold')
+
   ax3.set_ylabel("RMSE", fontsize=10)
   ax3.grid(True, alpha=0.3, axis='y')
 
@@ -514,7 +518,9 @@ def plot_results(results, system_name):
            'b-', alpha=0.8, label='LSTM', linewidth=1.5)
   ax4.plot(times_reg[:limit_reg], results['node_regular'][seed_idx]['pred'][:limit_reg, 0],
            'r-', linewidth=2, label='Neural ODE', alpha=0.9)
-  ax4.set_title(f"D. Regular Sampling (0-{t_max}ms)", fontsize=12, fontweight='bold')
+  # ax4.set_title(f"D. Regular Sampling (0-{t_max}ms)", fontsize=12, fontweight='bold')
+  ax4.set_title(f"D", fontsize=12, fontweight='bold')
+
   ax4.set_xlabel("Time (ms)", fontsize=10)
   ax4.set_ylabel("State Variable 1", fontsize=10)
   ax4.legend(fontsize=8, loc='best')
@@ -544,7 +550,8 @@ def plot_results(results, system_name):
                      (mean_smooth + std_smooth)[:1500],
                      color=color, alpha=0.2)
   ax5.axvline(x=SEQ_LEN * DT_MEAN, color='gray', linestyle=':', alpha=0.6, label='Training Horizon')
-  ax5.set_title(f"E. Error Evolution (n={N_SEEDS})", fontsize=12, fontweight='bold')
+  # ax5.set_title(f"E. Error Evolution (n={N_SEEDS})", fontsize=12, fontweight='bold')
+  ax5.set_title(f"E", fontsize=12, fontweight='bold')
   ax5.set_xlabel("Time (ms)", fontsize=10)
   ax5.set_ylabel("Euclidean Error", fontsize=10)
   ax5.legend(fontsize=9)
@@ -557,7 +564,8 @@ def plot_results(results, system_name):
   for patch, color in zip(bp['boxes'], ['blue', 'cyan', 'red']):
     patch.set_facecolor(color)
     patch.set_alpha(0.6)
-  ax6.set_title("F. RMSE Distribution", fontsize=12, fontweight='bold')
+  # ax6.set_title("F. RMSE Distribution", fontsize=12, fontweight='bold')
+  ax6.set_title("F", fontsize=12, fontweight='bold')
   ax6.set_ylabel("RMSE", fontsize=10)
   ax6.grid(True, alpha=0.3, axis='y')
 
